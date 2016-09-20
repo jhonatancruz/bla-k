@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.applet.*;
 
 public class polygons extends Applet {
+	//adding this message so that I can learn how to push
 	int[] squarex = { 50, 50, 150, 150 };
 	int[] squarey = { 150, 50, 50, 150 };
 	int[] trix = { 65, 115, 165 };
@@ -11,6 +12,7 @@ public class polygons extends Applet {
 	int[] squarehy = { 200, 100, 100, 200 };
 	int[] trihx = { 25, 88, 150 };
 	int[] trihy = { 100, 50, 100 };
+
 
 	public void init() {
 
@@ -27,6 +29,8 @@ public class polygons extends Applet {
 			g.fillPolygon(trix, triy, 3);
 		} else if (userinput.equals("square")) {
 			g.fillPolygon(squarex, squarey, 4);
+		}else if(userinput.equals("circle")){
+            g.drawOval(50,50,100,100);
 		} else {
 			System.out.println("no input");
 		}
