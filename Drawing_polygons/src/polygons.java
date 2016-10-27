@@ -1,11 +1,12 @@
 import java.awt.*;
 import java.util.Scanner;
 import java.applet.*;
+import java.awt.event.*;
 
 
-public class polygons extends Applet {
+public class polygons extends Applet implements ActionListener {
 	//adding this message so that I can learn how to push
-	int[] squarex = { 50, 50, 150, 150 };
+/*	int[] squarex = { 50, 50, 150, 150 };
 	int[] squarey = { 150, 50, 50, 150 };
 	int[] trix = { 65, 115, 165 };
 	int[] triy = { 150, 100, 150 };
@@ -13,18 +14,45 @@ public class polygons extends Applet {
 	int[] squarehy = { 200, 100, 100, 200 };
 	int[] trihx = { 25, 88, 150 };
 	int[] trihy = { 100, 50, 100 };
-	int[] Try = { 50,50,50,100};
+	int[] Try = { 50,50,50,100}; */
+	
+	Graphics g;
+	Image picture;
 
-	public void init() {
 
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == button1) {
+			System.out.println("Button 1 was pressed"); 
+		}
+		else{
+		
+			System.out.println("Button 2 was pressed");
+		}
 	}
 
-	public void paint(Graphics g) {
-		Scanner input = new Scanner(System.in);
-		String userinput = input.nextLine();
+		Button button1, button2;
+		
+	public void init() {
+		this.setSize(new Dimension(350,500));
+		button1 = new Button("2D");
+		add(button1);
+		button1.addActionListener(this);
 
-		if (userinput.equals("1")) {
-			//Across Top
+		button2 = new Button("temple");
+		add(button2);
+		button2.addActionListener(this);
+		picture = getImage(getDocumentBase(),"house.jpg");
+		
+		}
+	
+
+	
+
+
+	public void paint(Graphics g) {
+		  g.drawImage(picture, 30,30, this); 
+	
 			g.drawArc(20,50,10,10,0,360);
 			g.drawArc(35,50,10,10,0,360);
 			g.drawArc(50,50,10,10,0,360);
@@ -146,9 +174,7 @@ public class polygons extends Applet {
 			//g.drawArc(20,150,10,10,0,360);
 			
 		
-		} else {
-			System.out.println("no input");
-		}
+		
 
 	}
 
