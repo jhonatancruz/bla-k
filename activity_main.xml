@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="murachandroidex_starts.bla_k_3d.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_light">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/background_dark">
+
+            <TextView
+                android:text="Bla-k Temple"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:textColor="@android:color/background_light" />
+
+            <Button
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button"
+                android:layout_weight="1"
+                android:text="Create New"
+                android:textSize="10sp"
+                android:background="?android:attr/colorPressedHighlight"
+                android:textColor="@android:color/background_dark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray">
+
+                <TextView
+                    android:text="Select a Temple from the List Below"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:textColor="@android:color/background_dark" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scrollbarStyle="outsideInset"
+                    android:background="?attr/colorButtonNormal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:background="@android:color/holo_orange_light">
+
+                        <Button
+                            android:text="Temple of ..."
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button2"
+                            android:background="@android:color/holo_orange_light" />
+
+                        <Button
+                            android:text="Temple of ..."
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button3"
+                            android:background="@android:color/holo_orange_light" />
+
+                        <Button
+                            android:text="Temple of ..."
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button4"
+                            android:background="@android:color/holo_orange_light" />
+
+                        <Button
+                            android:text="Temple of ..."
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button5"
+                            android:background="@android:color/holo_orange_light" />
+
+                        <Button
+                            android:text="Temple of ..."
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button6"
+                            android:background="@android:color/holo_orange_light" />
+
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:text="2D"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button8"
+                    android:background="?android:attr/colorAccent" />
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:text="3D"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button7"
+                    android:background="@android:color/holo_green_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:text="Enter"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button9"
+                    android:background="@android:color/holo_purple" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
