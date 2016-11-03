@@ -1,120 +1,176 @@
-package blkGUIone;
+package groupproject;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 
-import java.applet.Applet;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.PaintEvent;
-import java.util.Scanner;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-/**
- * @author danielxu
- *
- */
-public class GUI extends JFrame implements ActionListener{
-	public static final String g = null;
-	private JFrame mainframe;
-	private JPanel p,p1,p2,p3;
-	private JButton twod, threed,bexit;
-	private static JComboBox sizes = new JComboBox(new String[] { "example temple1","example temple2","example temple3"});
-
-	
-	
-	public static void main(String[] args) {
-		 new GUI();
-	}
-	
-	public GUI(){
-		//create mainframe
-		mainframe =new JFrame("BLK project");
-		mainframe.setLayout(new GridLayout(1,2));
-		
-		//layout
-		p3 =new JPanel(new FlowLayout());
-		p= new JPanel(new FlowLayout());
-		p1= new JPanel(new FlowLayout());
-		p2=new JPanel(new FlowLayout());
-		
-		
-
-		//buttons in mainframe
-		twod=new JButton("2D");
-		twod.addActionListener(this);
-		
-		threed=new JButton("3D");
-		threed.addActionListener(this);
-		
-		bexit=new JButton("exit");
-		bexit.addActionListener(this);
-		
-		sizes.addActionListener(this);
-		//add button to panel
-		p3.add(sizes);
-		p.add(twod);
-		p1.add(threed);
-		p2.add(bexit);
-		
-		
-		//add panel to frame
-		mainframe.add(p3);
-		mainframe.add(p);
-		mainframe.add(p1);
-		mainframe.add(p2);
-		
-		mainframe.setSize(400, 100);
-		mainframe.setResizable(false);
-		mainframe.setLocationRelativeTo(null);
-		mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		mainframe.setVisible(true);
-		
-	}
-	
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String arg =e.getActionCommand();
-		if(arg == "2D"){
-			new GUI2();
-			
-			//JOptionPane.showMessageDialog(p, message);
-		}
-		else if(arg=="3D"){
-			
-		}
-		else if(arg=="exit"){
-			System.exit(0);
-
-		}
-	}
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 class GUI2 extends JFrame{
 	private JFrame birdyf;
-	private JPanel p;
+	private JTabbedPane jtp=new JTabbedPane(JTabbedPane.TOP);
+	private JTextField showFeild=new JTextField();
 	
 	public GUI2(){
-	birdyf =new JFrame("Bird Eye View");
-	System.out.println("out");
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setVisible(true);
-    
-	p= new JPanel();
-	birdyf.add(p);
-	birdyf.setSize(800, 800);
-	birdyf.setVisible(true);
-	
-	
+				
+		
+		//Jframe
+		birdyf =new JFrame("Bird Eye View");
+		System.out.println("out");
+		setVisible(true);
+		
+		//JPanel
+		JPanel panel= new MyJPanel();
+		
+		//JTabbed Pane
+		jtp.addTab("2d", new JPanel());
+		jtp.addTab("3d", new JPanel());
+		jtp.addTab("description", new JPanel());
+		jtp.addChangeListener(new MyChangeListener());
+		birdyf.add(jtp);
+		birdyf.add(showFeild, BorderLayout.SOUTH);
+		birdyf.add(jtp,BorderLayout.CENTER);
+		
+		//add
+		birdyf.add(panel,BorderLayout.CENTER);
+		birdyf.setSize(800, 800);
+		birdyf.setVisible(true);
 	}
+	class MyChangeListener implements ChangeListener{
+
+		@Override
+		public void stateChanged(ChangeEvent e) {
+			String temp = jtp.getTitleAt(jtp.getSelectedIndex());
+		}
+		
+	}
+
+	class MyJPanel extends JPanel {
+	public void paintComponent(Graphics g){
+		super.paintComponents(g);
 	
-}	
-
-
+		g.drawArc(20,50,10,10,0,360);
+		g.drawArc(35,50,10,10,0,360);
+		g.drawArc(50,50,10,10,0,360);
+		g.drawArc(70,50,10,10,0,360);
+		g.drawArc(85,50,10,10,0,360);
+		g.drawArc(100,50,10,10,0,360);
+		g.drawArc(20,70,10,10,0,360);
+		g.drawArc(35,70,10,10,0,360);
+		g.drawArc(50,70,10,10,0,360);
+		g.drawArc(70,70,10,10,0,360);
+		g.drawArc(85,70,10,10,0,360);
+		g.drawArc(100,70,10,10,0,360);
+		//Fill
+		g.fillArc(20,50,10,10,0,360);
+		g.fillArc(35,50,10,10,0,360);
+		g.fillArc(50,50,10,10,0,360);
+		g.fillArc(70,50,10,10,0,360);
+		g.fillArc(85,50,10,10,0,360);
+		g.fillArc(100,50,10,10,0,360);
+		g.fillArc(20,70,10,10,0,360);
+		g.fillArc(35,70,10,10,0,360);
+		g.fillArc(50,70,10,10,0,360);
+		g.fillArc(70,70,10,10,0,360);
+		g.fillArc(85,70,10,10,0,360);
+		g.fillArc(100,70,10,10,0,360);
+		g.setColor(Color.black);
+		//Down Left side
+		g.drawArc(20,90,10,10,0,360);
+		g.drawArc(20,110,10,10,0,360);
+		g.drawArc(20,130,10,10,0,360);
+		g.drawArc(20,150,10,10,0,360);
+		g.drawArc(20,170,10,10,0,360);
+		g.drawArc(20,190,10,10,0,360);
+		g.drawArc(20,210,10,10,0,360);
+		g.drawArc(20,230,10,10,0,360);
+		g.drawArc(20,250,10,10,0,360);
+		//Fill Left side
+		g.fillArc(20,90,10,10,0,360);
+		g.fillArc(20,110,10,10,0,360);
+		g.fillArc(20,130,10,10,0,360);
+		g.fillArc(20,150,10,10,0,360);
+		g.fillArc(20,170,10,10,0,360);
+		g.fillArc(20,190,10,10,0,360);
+		g.fillArc(20,210,10,10,0,360);
+		g.fillArc(20,230,10,10,0,360);
+		g.fillArc(20,250,10,10,0,360);
+		g.setColor(Color.black);
+		//Across bottom
+		g.drawArc(35,250,10,10,0,360);
+		g.drawArc(50,250,10,10,0,360);
+		g.drawArc(70,250,10,10,0,360);
+		g.drawArc(85,250,10,10,0,360);
+		g.drawArc(100,250,10,10,0,360);
+		g.drawArc(20,270,10,10,0,360);
+		g.drawArc(35,270,10,10,0,360);
+		g.drawArc(50,270,10,10,0,360);
+		g.drawArc(70,270,10,10,0,360);
+		g.drawArc(85,270,10,10,0,360);
+		g.drawArc(100,270,10,10,0,360);
+		//Fill Bottom
+		g.fillArc(35,250,10,10,0,360);
+		g.fillArc(50,250,10,10,0,360);
+		g.fillArc(70,250,10,10,0,360);
+		g.fillArc(85,250,10,10,0,360);
+		g.fillArc(100,250,10,10,0,360);
+		g.fillArc(20,270,10,10,0,360);
+		g.fillArc(35,270,10,10,0,360);
+		g.fillArc(50,270,10,10,0,360);
+		g.fillArc(70,270,10,10,0,360);
+		g.fillArc(85,270,10,10,0,360);
+		g.fillArc(100,270,10,10,0,360);
+		g.setColor(Color.black);
+		//Down right side
+		g.drawArc(100,90,10,10,0,360);
+		g.drawArc(100,110,10,10,0,360);
+		g.drawArc(100,130,10,10,0,360);
+		g.drawArc(100,150,10,10,0,360);
+		g.drawArc(100,170,10,10,0,360);
+		g.drawArc(100,190,10,10,0,360);
+		g.drawArc(100,210,10,10,0,360);
+		g.drawArc(100,230,10,10,0,360);
+		g.drawArc(100,250,10,10,0,360);
+		//Fill
+		g.fillArc(100,90,10,10,0,360);
+		g.fillArc(100,110,10,10,0,360);
+		g.fillArc(100,130,10,10,0,360);
+		g.fillArc(100,150,10,10,0,360);
+		g.fillArc(100,170,10,10,0,360);
+		g.fillArc(100,190,10,10,0,360);
+		g.fillArc(100,210,10,10,0,360);
+		g.fillArc(100,230,10,10,0,360);
+		g.fillArc(100,250,10,10,0,360);
+		g.setColor(Color.black);
+		//Border around
+		g.drawRect(15,15,100,280);
+		g.drawRect(14,14,100,280);
+		g.drawRect(15,15,101,281);
+		//Line_left_side
+		g.drawLine(38,70,38,260);
+		g.drawLine(39,70,39,260);
+		g.drawLine(40,70,40,260);
+		g.drawLine(41,70,41,260);
+		g.drawLine(42,70,42,260);
+		g.drawLine(43,70,43,260);
+		//Line_right_side
+		g.drawLine(88,70,88,260);
+		g.drawLine(89,70,89,260);
+		g.drawLine(90,70,90,260);
+		g.drawLine(91,70,91,260);
+		g.drawLine(92,70,92,260);
+		g.drawLine(93,70,93,260);
+		//Line across1
+		g.fillRect(39,230,54,8);
+		//line across2
+		g.fillRect(39,130,20,8);
+		g.fillRect(39,129,35,1);
+		g.fillRect(70,130,20,8);
+		}
+	}
 }
