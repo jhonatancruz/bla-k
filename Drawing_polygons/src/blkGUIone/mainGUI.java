@@ -117,10 +117,10 @@ public class mainGUI extends JFrame{
 			String pe = (String)cb.getSelectedItem();
 	
 			if(pe.equals("example temple1")){
-				//new GUI2();
+				new GUI2();
 				
 			}else if(pe.equals("example temple2")){
-				//new templeofherculer();
+				new templeofherculer();
 			}else if(pe.equals("example temple3")){
 			}
 		}

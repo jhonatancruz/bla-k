@@ -28,6 +28,7 @@ class GUI2 extends JFrame{
 		JPanel panel= new temple1();
 		
 		//JTabbed Pane
+		
 		jtp.addTab("2d", panel);
 		jtp.addTab("3d", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
