@@ -7,21 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class templeofherculer extends JFrame{
-	private JFrame birdyf;
-	
-	public templeofherculer(){
-		birdyf =new JFrame("temple of hercules at cori");
-		System.out.println("out");
-		setVisible(true);
-		
-		JPanel panel= new MyJPanel1();
-		birdyf.add(panel);
-		birdyf.setSize(350, 600);
-		birdyf.setVisible(true);
-	}
-	
-	class MyJPanel1 extends JPanel {
+class templeofherculer extends JPanel {
 		public void paintComponent(Graphics g){
 			super.paintComponents(g);
 			//JPanel
@@ -91,5 +77,4 @@ public class templeofherculer extends JFrame{
 		
 			g.fillRect(20, 155, 30, 8);
 			}
-		}
 }

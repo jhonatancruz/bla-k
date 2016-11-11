@@ -11,25 +11,31 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-class GUI2 extends JFrame{
+public class GUI2 extends JFrame{
 	private JFrame birdyf;
-	private JTabbedPane jtp=new JTabbedPane(JTabbedPane.TOP);
+	public JTabbedPane jtp=new JTabbedPane(JTabbedPane.TOP);
 	private JTextField showFeild=new JTextField();
 	
 	public GUI2(){
 				
 		
 		//Jframe
-		birdyf =new JFrame("example temple 1");
+		birdyf =new JFrame();
 		System.out.println("out");
 		setVisible(true);
 		
 		//JPanel
-		JPanel panel= new temple1();
 		
+		if(mainGUI.lbcj.equals("a")){
+			JPanel panel= new temple1();
+			jtp.add("2d",  panel);
+		}else if(mainGUI.lbcj.equals("b")){
+			JPanel panel= new templeofherculer();
+			jtp.add("2d", panel);
+			
+		}
 		//JTabbed Pane
 		
-		jtp.addTab("2d", panel);
 		jtp.addTab("3d", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		jtp.setSize(350,100);
@@ -48,4 +54,5 @@ class GUI2 extends JFrame{
 			String temp = jtp.getTitleAt(jtp.getSelectedIndex());
 		}
 	}
+
 }
