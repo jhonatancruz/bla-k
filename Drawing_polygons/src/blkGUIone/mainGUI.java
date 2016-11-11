@@ -80,7 +80,7 @@ public class mainGUI extends JFrame{
 		mainframe.add(cards);
 		mainframe.setBackground(Color.white);
 		mainframe.setSize(350, 600);
-		mainframe.setResizable(true);
+		mainframe.setResizable(false);
 		mainframe.setLocationRelativeTo(null);
 		mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainframe.setVisible(true);		
@@ -136,7 +136,7 @@ public class mainGUI extends JFrame{
 		
 	}
 }
-//this is a test
+
 
 
 
