@@ -1,4 +1,5 @@
 package blkGUIone;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -11,43 +12,43 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class GUI2 extends JFrame{
+public class GUI2 extends JFrame {
 	private JFrame birdyf;
-	public JTabbedPane jtp=new JTabbedPane(JTabbedPane.TOP);
-	private JTextField showFeild=new JTextField();
-	
-	public GUI2(){
-				
-		
-		//Jframe
-		birdyf =new JFrame();
+	public JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
+	private JTextField showFeild = new JTextField();
+
+	public GUI2() {
+
+		// Jframe
+		birdyf = new JFrame();
 		System.out.println("out");
 		setVisible(true);
-		
-		//JPanel
-		
-		if(mainGUI.lbcj.equals("a")){
-			JPanel panel= new temple1();
-			jtp.add("2d",  panel);
-		}else if(mainGUI.lbcj.equals("b")){
-			JPanel panel= new templeofherculer();
+
+		// JPanel
+
+		if (mainGUI.lbcj.equals("a")) {
+			JPanel panel = new temple1();
 			jtp.add("2d", panel);
-			
+		} else if (mainGUI.lbcj.equals("b")) {
+			JPanel panel = new templeofherculer();
+			jtp.add("2d", panel);
+
 		}
-		//JTabbed Pane
-		
+		// JTabbed Pane
+
 		jtp.addTab("3d", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
-		jtp.setSize(350,100);
-		
+		jtp.setSize(350, 100);
+
 		birdyf.add(jtp);
-		
-		//add
+
+		// add
 		birdyf.setSize(350, 600);
 		birdyf.setVisible(true);
 
 	}
-	class MyChangeListener implements ChangeListener{
+
+	class MyChangeListener implements ChangeListener {
 
 		@Override
 		public void stateChanged(ChangeEvent e) {
