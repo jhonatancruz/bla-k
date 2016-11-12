@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
 public class templeofherculer extends JFrame {
 	private JFrame birdyf;
 
@@ -22,6 +23,11 @@ public class templeofherculer extends JFrame {
 
 	class MyJPanel1 extends JPanel {
 		public void paintComponent(Graphics g) {
+=======
+
+class templeofherculer extends JPanel {
+		public void paintComponent(Graphics g){
+>>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 			super.paintComponents(g);
 			// JPanel
 
@@ -88,6 +94,10 @@ public class templeofherculer extends JFrame {
 			// across bar bottom left
 
 			g.fillRect(20, 155, 30, 8);
+<<<<<<< HEAD
 		}
 	}
+=======
+			}
+>>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 }
