@@ -7,16 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-<<<<<<< HEAD
 public class mainGUI extends JFrame {
 	public static final String g = null;
 	private JFrame mainframe;
@@ -61,81 +58,23 @@ public class mainGUI extends JFrame {
 
 		// connect to listenner
 		sizes.addActionListener(new MyActionListener1());
-=======
-
-/**
- * @author danielxu
- *
- */
-public class mainGUI extends JFrame{
-	
-
-	public static final String g = null;
-	private JFrame mainframe;
-	private JPanel p1;
-	private JButton bgo ,bexit;
-	private static JComboBox sizes = new JComboBox(new String[] {"Please select one temple","example temple1","example temple2","example temple3"});	
-	//java.net.URL imgUrl = getClass().getResource("BLK-Logo-White.png");
-	//ImageIcon icon = new ImageIcon("");
-	ImageIcon icon = new ImageIcon("/Users/danielxu/Downloads/BLK-Logo-White.jpg");
-	public JLabel showInfo = new JLabel();
-	public static String lbcj;
-	
-
-	public mainGUI(){
-		//create mainframe
-		mainframe =new JFrame("BLK project");
-		
-		
-		
-		//Panels
-		JPanel p1= new JPanel();
-		JPanel p2=new JPanel();
-		JPanel cards= new JPanel(new CardLayout());
-		cards.add(p1,"mainpanel");
-		cards.add(p2,"subpanel");
-		CardLayout cl= (CardLayout)(cards.getLayout());
-		cl.show(cards, "mainpanel");
-		//label
-        JLabel label = new JLabel(icon);
-        
-		//buttons in Panel
-		
-		bgo=new JButton("Go");
-		bgo.addActionListener(new MyActionListener());
-		
-		bexit=new JButton("exit");
-		bexit.addActionListener(new MyActionListener());
-		
-		//connect to listenner
->>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 		sizes.addItemListener(new MyItemListener());
 
 		// add button to panel
 
 		p1.add(sizes);
-<<<<<<< HEAD
 		p1.add(twod);
 		// p1.add(threed);
 
-=======
-		p1.add(bgo);
-		p1.add(showInfo);
-		
->>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 		p1.add(bexit);
 
 		label.setSize(350, 600);
 		// add panel to frame
 		mainframe.add(label);
-<<<<<<< HEAD
 		mainframe.add(p1);
 
 		p1.add(showInfo);
-=======
->>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 
-		mainframe.add(cards);
 		mainframe.setBackground(Color.white);
 		mainframe.setSize(350, 600);
 		mainframe.setResizable(false);
@@ -161,7 +100,6 @@ public class mainGUI extends JFrame{
 
 			else if (arg == "Go") {
 				System.out.println(lbcj);
-<<<<<<< HEAD
 			}
 		}
 	}
@@ -177,14 +115,6 @@ public class mainGUI extends JFrame{
 			} else if (pe.equals("Example temple2")) {
 				new templeofherculer();
 			} else if (pe.equals("Example temple3")) {
-=======
-				if(lbcj=="none"){
-					JOptionPane.showMessageDialog(null, "Please choose a temple");
-				}else{
-					new GUI2();
-				}
-				
->>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 			}
 		}
 	}
@@ -193,7 +123,6 @@ public class mainGUI extends JFrame{
 
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-<<<<<<< HEAD
 			JComboBox<String> cb = (JComboBox<String>) e.getSource();
 			String pe = (String) cb.getSelectedItem();
 			if (pe.equals("Example temple1")) {
@@ -213,25 +142,6 @@ public class mainGUI extends JFrame{
 	public static void addpanel() {
 		
 
-=======
-			JComboBox<String> cb = (JComboBox<String>)e.getSource();
-			String pe = (String)cb.getSelectedItem();
-			if(pe.equals("example temple1")){
-				showInfo.setText("test description for temple1");
-				lbcj= "a";
-			}else if(pe.equals("example temple2")){
-				showInfo.setText("test description for temple2");
-				lbcj="b";
-			}else if(pe.equals("example temple3")){
-				showInfo.setText("test description for temple3");
-				lbcj="c";
-			}else if(pe.equals("Please select one temple")){
-				
-				lbcj="none";
-			}
-		}
-
-		
->>>>>>> 16c05bb3790a3714dfb3d31f9be382d1ea7f41ac
 	}
+
 }
