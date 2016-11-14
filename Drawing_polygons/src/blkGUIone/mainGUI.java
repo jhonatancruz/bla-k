@@ -17,10 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- * @author danielxu
- *
- */
+
 public class mainGUI extends JFrame {
 
 	public static final String g = null;
@@ -28,15 +25,12 @@ public class mainGUI extends JFrame {
 	private JPanel p1;
 	private JButton bgo, bexit;
 	private static JComboBox sizes = new JComboBox(
-			new String[] { "Please select one temple", "example temple1", "example temple2", "example temple3" });
-	// java.net.URL imgUrl = getClass().getResource("BLK-Logo-White.png");
-	// ImageIcon icon = new ImageIcon("");
-	// ImageIcon icon = new
-	// ImageIcon("/Users/danielxu/Downloads/BLK-Logo-White.jpg");
+			new String[] { "Please select a temple", "The Temple at Teos in Asia Minor", "Temple of Herculer", "Example temple 3" ,"Example temple 4"});
+	
 	ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
 	public JLabel showInfo = new JLabel();
 	public static String lbcj;
-
+	
 	public mainGUI() {
 		// create mainframe
 		mainframe = new JFrame("BLK project");
@@ -117,20 +111,25 @@ public class mainGUI extends JFrame {
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox<String> cb = (JComboBox<String>) e.getSource();
 			String pe = (String) cb.getSelectedItem();
-			if (pe.equals("example temple1")) {
-				showInfo.setText("test description for temple1");
+			if (pe.equals("The Temple at Teos in Asia Minor")) {
+				showInfo.setText("Teos was one of the twelve cities.");
+						
 				lbcj = "a";
-			} else if (pe.equals("example temple2")) {
-				showInfo.setText("test description for temple2");
+			} else if (pe.equals("Temple of Hercules")) {
+				showInfo.setText("description for temple 2");
 				lbcj = "b";
 			} else if (pe.equals("example temple3")) {
-				showInfo.setText("test description for temple3");
+				showInfo.setText("description for temple 3");
 				lbcj = "c";
-			} else if (pe.equals("Please select one temple")) {
+			} else if (pe.equals("example temple 4")) {
+				showInfo.setText("description for temple 4");
+				lbcj = "d";
+			} else if (pe.equals("Please select a temple")) {
 
 				lbcj = "none";
-			}
+		
 		}
 
 	}
+}
 }
