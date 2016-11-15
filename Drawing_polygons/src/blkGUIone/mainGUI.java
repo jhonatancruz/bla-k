@@ -43,7 +43,7 @@ public class mainGUI extends JFrame {
 		cards.add(p2, "subpanel");
 		CardLayout cl = (CardLayout) (cards.getLayout());
 		cl.show(cards, "mainpanel");
-		// label hello
+		// label
 		JLabel label = new JLabel(icon);
 
 		// buttons in Panel
