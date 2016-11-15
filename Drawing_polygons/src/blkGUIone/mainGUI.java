@@ -29,7 +29,7 @@ public class mainGUI extends JFrame {
 	
 	ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
 	public JLabel showInfo = new JLabel();
-	public static String lbcj;
+	public static String lbcj="none";
 	
 	public mainGUI() {
 		// create mainframe
