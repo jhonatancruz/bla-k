@@ -27,7 +27,7 @@ public class mainGUI extends JFrame {
 	private static JComboBox sizes = new JComboBox(
 			new String[] { "Please select a temple", "The Temple at Teos in Asia Minor", "Temple of Hercules", "Example temple 3" ,"Example temple 4"});
 	
-	ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
+	//ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
 	public JLabel showInfo = new JLabel();
 	public static String lbcj;
 	
@@ -44,7 +44,7 @@ public class mainGUI extends JFrame {
 		CardLayout cl = (CardLayout) (cards.getLayout());
 		cl.show(cards, "mainpanel");
 		// label
-		JLabel label = new JLabel(icon);
+		//JLabel label = new JLabel(icon);
 
 		// buttons in Panel
 
@@ -65,9 +65,9 @@ public class mainGUI extends JFrame {
 
 		p1.add(bexit);
 
-		label.setSize(350, 600);
+		//label.setSize(350, 600);
 		// add panel to frame
-		mainframe.add(label);
+		//mainframe.add(label);
 
 		mainframe.add(cards);
 		mainframe.setBackground(Color.white);
