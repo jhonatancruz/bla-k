@@ -12,7 +12,6 @@ class templeofherculer extends JPanel {
 		// JPanel
 
 		// temple of hercules at cori
-
 		// outline around
 
 		g.drawRect(15, 50, 100, 200);

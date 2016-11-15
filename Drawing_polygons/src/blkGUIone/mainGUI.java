@@ -43,32 +43,29 @@ public class mainGUI extends JFrame {
 		cards.add(p2, "subpanel");
 		CardLayout cl = (CardLayout) (cards.getLayout());
 		cl.show(cards, "mainpanel");
+		
 		// label
 		JLabel label = new JLabel(icon);
 
 		// buttons in Panel
-
 		bgo = new JButton("Go");
 		bgo.addActionListener(new MyActionListener());
 
 		bexit = new JButton("exit");
 		bexit.addActionListener(new MyActionListener());
 
-		// connect to listenner
+		// connect to listener
 		sizes.addItemListener(new MyItemListener());
 
 		// add button to panel
-
 		p1.add(sizes);
 		p1.add(bgo);
 		p1.add(showInfo);
-
 		p1.add(bexit);
-
 		label.setSize(350, 600);
+		
 		// add panel to frame
 		mainframe.add(label);
-
 		mainframe.add(cards);
 		mainframe.setBackground(Color.white);
 		mainframe.setSize(350, 600);
