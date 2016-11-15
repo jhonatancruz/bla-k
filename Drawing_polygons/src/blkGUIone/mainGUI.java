@@ -25,7 +25,7 @@ public class mainGUI extends JFrame {
 	private JPanel p1;
 	private JButton bgo, bexit;
 	private static JComboBox sizes = new JComboBox(
-			new String[] { "Please select a temple", "The Temple at Teos in Asia Minor", "Temple of Herculer", "Example temple 3" ,"Example temple 4"});
+			new String[] { "Please select a temple", "The Temple at Teos in Asia Minor", "Temple of Hercules", "Example temple 3" ,"Example temple 4"});
 	
 	ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
 	public JLabel showInfo = new JLabel();
