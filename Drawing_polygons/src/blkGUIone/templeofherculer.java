@@ -22,7 +22,9 @@ class templeofherculer extends JPanel {
 		g.drawArc(50, 230, 10, 10, 0, 360);
 		g.drawArc(75, 230, 10, 10, 0, 360);
 		g.drawArc(100, 230, 10, 10, 0, 360);
-		g.fillArc(25, 230, 10, 10, 0, 360);// filling
+		g.fillArc(25, 230, 10, 10, 0, 360);
+		
+		// filling
 		g.fillArc(50, 230, 10, 10, 0, 360);
 		g.fillArc(75, 230, 10, 10, 0, 360);
 		g.fillArc(100, 230, 10, 10, 0, 360);
@@ -35,7 +37,9 @@ class templeofherculer extends JPanel {
 
 		// side two left
 		g.drawArc(25, 180, 10, 10, 0, 360);
-		g.fillArc(25, 180, 10, 10, 0, 360); // filling
+		g.fillArc(25, 180, 10, 10, 0, 360); 
+		
+		// filling
 		g.fillArc(25, 205, 10, 10, 0, 360);
 		g.drawArc(25, 205, 10, 10, 0, 360);
 
