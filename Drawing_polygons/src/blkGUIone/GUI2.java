@@ -32,7 +32,9 @@ public class GUI2 extends JFrame {
 		} else if (mainGUI.lbcj.equals("b")) {
 			JPanel panel = new templeofherculer();
 			jtp.add("2d", panel);
-
+		} else if (mainGUI.lbcj.equals("c")){
+			JPanel panel =new temple1();
+			jtp.add("2d", panel);
 		}
 		// JTabbed Pane
 
