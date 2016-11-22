@@ -56,10 +56,11 @@ public class mainGUI extends JFrame {
 		Box b2=Box.createHorizontalBox();
 		b1.add(Box.createRigidArea(new Dimension(0,5)));		
 		Box compare= Box.createVerticalBox();
+		Box compareh=Box.createHorizontalBox();
 		//tab
 		jtp.addTab("Temples", b1);
 		jtp.addTab("Compare", compare);
-		jtp.addTab("User input", new JPanel());
+		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		
 		
@@ -97,9 +98,10 @@ public class mainGUI extends JFrame {
 
 		//compare pane
 		compare.add(sizes2);
-		compare.add(bcompare);
-		compare.add(badd);
-				
+		compareh.add(bcompare);
+		compareh.add(badd);
+		compare.add(compareh);
+
 		//label.setSize(350, 600);
 		// add panel to frame
 		//mainframe.add(label);
@@ -170,12 +172,6 @@ public class mainGUI extends JFrame {
 				lbcj = "none";
 			}
 		}
-
-	
-
-
-
-	
 	}
 	class MyChangeListener implements ChangeListener {
 
