@@ -1,6 +1,4 @@
 package blkGUIone;
-//fixing broken code
-
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -25,7 +23,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import blkGUIone.GUI2.MyChangeListener;
-
 
 public class mainGUI extends JFrame {
 
@@ -58,12 +55,9 @@ public class mainGUI extends JFrame {
 		a.add(Box.createRigidArea(new Dimension(0,5)));		
 		Box compare= Box.createVerticalBox();
 		Box compareh=Box.createHorizontalBox();
-
 		//tab
-		
 		jtp.addTab("Temples", a);
 		jtp.addTab("Compare", compare);
-		jtp.addTab("TemplesProgress", new JPanel());
 		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		
@@ -170,6 +164,7 @@ public class mainGUI extends JFrame {
 			}
 		}
 	}
+	
 	class MyChangeListener implements ChangeListener {
 
 		@Override
@@ -177,9 +172,9 @@ public class mainGUI extends JFrame {
 			String temp = jtp.getTitleAt(jtp.getSelectedIndex());
 		}
 	}
+	
 	public static TEMPLE_TYPE getLbcj() {
 		return lbcj;
 	}
-
-
+	
 }
