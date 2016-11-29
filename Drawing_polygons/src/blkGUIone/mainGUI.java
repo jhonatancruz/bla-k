@@ -58,9 +58,12 @@ public class mainGUI extends JFrame {
 		a.add(Box.createRigidArea(new Dimension(0,5)));		
 		Box compare= Box.createVerticalBox();
 		Box compareh=Box.createHorizontalBox();
+
 		//tab
+		
 		jtp.addTab("Temples", a);
 		jtp.addTab("Compare", compare);
+		jtp.addTab("TemplesProgress", new JPanel());
 		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		
