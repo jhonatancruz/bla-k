@@ -25,7 +25,7 @@ public class GUI2 extends JFrame {
 		setVisible(true);
 
 		// JPanel
-
+/*
 		if (mainGUI.lbcj.equals("a")) {
 			JPanel panel = new temple1();
 			jtp.add("2d", panel);
@@ -35,7 +35,7 @@ public class GUI2 extends JFrame {
 		} else if (mainGUI.lbcj.equals("c")){
 			JPanel panel =new temple1();
 			jtp.add("2d", panel);
-		}
+		}*/
 		// JTabbed Pane
 
 		jtp.addTab("3d", new JPanel());

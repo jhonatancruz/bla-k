@@ -29,16 +29,16 @@ import blkGUIone.GUI2.MyChangeListener;
 
 public class mainGUI extends JFrame {
 
-	public static final String g = null;
 	private JFrame mainframe;
 	private JButton bgo, bexit, bcompare,badd;
-	public static JComboBox sizes = new JComboBox(
-			new String[] { "Please select a temple", "The Temple at Teos in Asia Minor", "Temple of Hercules", "example temple 3" ,"Example temple 4"});
-	public static JComboBox sizes2 = new JComboBox(
-			new String[] { "Please select a temple", "The Temple at Teos in Asia Minor", "Temple of Hercules", "example temple 3" ,"Example temple 4"});
+	
 	//ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
 	public JLabel showInfo = new JLabel();
-	public static String lbcj="none";
+	//public static String lbcj="none";
+	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.ASIA_MINOR;
+	public static JComboBox sizes2 = new JComboBox(lbcj.values());
+	public static JComboBox sizes = new JComboBox(lbcj.values());
+	
 	public JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
 	public static Panel panel;
 	
@@ -75,10 +75,10 @@ public class mainGUI extends JFrame {
 		bexit.addActionListener(new MyActionListener());
 		
 		bcompare = new JButton("compare");
-		bexit.addActionListener(new MyActionListener());
-
+		bcompare.addActionListener(new MyActionListener());
+		
 		badd = new JButton("add");
-		bexit.addActionListener(new MyActionListener());
+		badd.addActionListener(new MyActionListener());
 		// connect to listenner
 		sizes.addItemListener(new MyItemListener());
 
@@ -135,14 +135,14 @@ public class mainGUI extends JFrame {
 			if (arg == "exit") {
 				System.exit(0);
 			}
-
 			else if (arg == "Go") {
 				System.out.println(lbcj);
-				if (lbcj == "none") {
-					JOptionPane.showMessageDialog(null, "Please choose a temple");
-				} else {
+				
 					new GUI2();
-				}
+			}else if(arg=="add"){
+				System.out.println("add");
+			}else if(arg=="compare"){
+				System.out.println("compare");
 			}
 		}
 	}
@@ -151,26 +151,17 @@ public class mainGUI extends JFrame {
 
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			JComboBox<String> cb = (JComboBox<String>) e.getSource();
-			String pe = (String) cb.getSelectedItem();
-			
-			if (pe.equals("The Temple at Teos in Asia Minor")) {
-				showInfo.setText("Teos was one of the twelve cities.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-				lbcj = "a";
-								
-			} else if (pe.equals("Temple of Hercules")) {
+			JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
+			TEMPLE_TYPE pe = (TEMPLE_TYPE) cb.getSelectedItem();
+			System.out.println(pe);
+			if(pe == TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
+				JOptionPane.showMessageDialog(null,"you have not select any temple" );
+			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
+				showInfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
+			} else if (pe == TEMPLE_TYPE.HERCULER) {
 				showInfo.setText("description for temple 2");
-				lbcj = "b";
-			} else if (pe.equals("example temple 3")) {
-				showInfo.setText("description for temple 3");
-				lbcj = "c";
-			} else if (pe.equals("example temple 4")) {
-				showInfo.setText("description for temple 4");
-				lbcj = "d";
-			} else if (pe.equals("Please select a temple")) {
-
-				lbcj = "none";
 			}
+			
 		}
 	}
 	class MyChangeListener implements ChangeListener {
