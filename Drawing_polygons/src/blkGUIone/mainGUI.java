@@ -40,8 +40,9 @@ public class mainGUI extends JFrame {
 	public static JComboBox sizes = new JComboBox(lbcj.values());
 	
 	public JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
-	public static Panel panel;
+	private static Panel Panel;
 	
+	private static Container a;
 	public mainGUI() {
 		// create mainframe
 		mainframe = new JFrame("BLK project");
@@ -52,13 +53,13 @@ public class mainGUI extends JFrame {
 		//JLabel label = new JLabel(icon);
 		
 		//boxlayout
-		Box b1=Box.createVerticalBox();
+		Box a=Box.createVerticalBox();
 		Box b2=Box.createHorizontalBox();
-		b1.add(Box.createRigidArea(new Dimension(0,5)));		
+		a.add(Box.createRigidArea(new Dimension(0,5)));		
 		Box compare= Box.createVerticalBox();
 		Box compareh=Box.createHorizontalBox();
 		//tab
-		jtp.addTab("Temples", b1);
+		jtp.addTab("Temples", a);
 		jtp.addTab("Compare", compare);
 		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
@@ -83,17 +84,16 @@ public class mainGUI extends JFrame {
 		sizes.addItemListener(new MyItemListener());
 
 		// add button to panel
-		b1.add(sizes);
+		a.add(sizes);
 		b2.add(bgo);
 		b2.add(bexit);
-		b1.add(b2);
-		panel = new temple1();
-		b1.add(panel);
-		
+		a.add(b2);
+		a.add(showInfo);
+		a.add(panel);
 	
 		//b1.add(Box.createVerticalGlue());
 
-		b1.add(showInfo);
+		
 		
 
 		//compare pane
@@ -116,7 +116,9 @@ public class mainGUI extends JFrame {
 		mainframe.setVisible(true);
 	}
 
-	
+	public static void setPanel(Panel panel) {
+		mainGUI.Panel = panel;
+	}
 
 	
 
@@ -148,7 +150,7 @@ public class mainGUI extends JFrame {
 	}
 
 	class MyItemListener implements ItemListener {
-
+		
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
@@ -158,10 +160,11 @@ public class mainGUI extends JFrame {
 				JOptionPane.showMessageDialog(null,"you have not select any temple" );
 			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
 				showInfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
+				lbcj=TEMPLE_TYPE.ASIA_MINOR;
 			} else if (pe == TEMPLE_TYPE.HERCULER) {
-				showInfo.setText("description for temple 2");
+				showInfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
+				lbcj=TEMPLE_TYPE.HERCULER;
 			}
-			
 		}
 	}
 	class MyChangeListener implements ChangeListener {
@@ -171,4 +174,9 @@ public class mainGUI extends JFrame {
 			String temp = jtp.getTitleAt(jtp.getSelectedIndex());
 		}
 	}
+	public static TEMPLE_TYPE getLbcj() {
+		return lbcj;
+	}
+
+
 }

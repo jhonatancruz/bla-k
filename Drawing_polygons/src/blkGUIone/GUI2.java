@@ -20,24 +20,26 @@ public class GUI2 extends JFrame {
 	public GUI2() {
 
 		// Jframe
-		birdyf = new JFrame();
+		String a = null;
+		
 		System.out.println("out");
 		setVisible(true);
 
 		// JPanel
-/*
-		if (mainGUI.lbcj.equals("a")) {
+
+		if (mainGUI.getLbcj()==TEMPLE_TYPE.ASIA_MINOR) {
 			JPanel panel = new temple1();
 			jtp.add("2d", panel);
-		} else if (mainGUI.lbcj.equals("b")) {
+			a=TEMPLE_TYPE.ASIA_MINOR.name;
+		} else if (mainGUI.getLbcj()==TEMPLE_TYPE.HERCULER) {
 			JPanel panel = new templeofherculer();
 			jtp.add("2d", panel);
-		} else if (mainGUI.lbcj.equals("c")){
-			JPanel panel =new temple1();
-			jtp.add("2d", panel);
-		}*/
+			a=TEMPLE_TYPE.HERCULER.name;
+		}
+		
+		birdyf = new JFrame(a);
 		// JTabbed Pane
-
+		
 		jtp.addTab("3d", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		jtp.setSize(350, 100);
