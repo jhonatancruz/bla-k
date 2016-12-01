@@ -58,6 +58,7 @@ public class mainGUI extends JFrame {
 		//tab
 		jtp.addTab("Temples", a);
 		jtp.addTab("Compare", compare);
+		jtp.addTab("Temple Progress", new JPanel());
 		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		
@@ -86,7 +87,7 @@ public class mainGUI extends JFrame {
 		b2.add(bexit);
 		a.add(b2);
 		a.add(showInfo);
-		a.add(panel);
+		
 	
 		//b1.add(Box.createVerticalGlue());
 
