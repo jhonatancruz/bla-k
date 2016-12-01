@@ -31,7 +31,7 @@ public class mainGUI extends JFrame {
 	private JButton bgo, bexit, bcompare,badd;
 	
 	//ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
-	public Dialog showinfo = new Dialog(showinfo);
+	public JLabel showinfo = new JLabel();
 	//public static String lbcj="none";
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.ASIA_MINOR;
 	public static JComboBox sizes2 = new JComboBox(lbcj.values());
