@@ -30,25 +30,28 @@ public class mainGUI extends JFrame {
 	private JFrame mainframe;
 	private JButton bgo, bexit, bcompare,badd;
 	
-	//ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
 	public JLabel showinfo = new JLabel();
-	//public static String lbcj="none";
-	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.ASIA_MINOR;
+	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
 	public static JComboBox sizes2 = new JComboBox(lbcj.values());
 	public static JComboBox sizes = new JComboBox(lbcj.values());
+	public static JPanel panel;
+	public static JLabel label;
 	
 	public JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
-	private static Panel Panel;
 	
-	private static Container a;
 	public mainGUI() {
 		// create mainframe
 		mainframe = new JFrame("BLK project");
 		
 		//jpanel
 		JPanel panel=new JPanel();
+		mainGUI.panel=panel;
+		mainGUI.panel=new temple1();
+		
 		// label hello
-		//JLabel label = new JLabel(icon);
+		ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
+		mainGUI.label= new JLabel(icon);
+		
 		
 		//boxlayout
 		Box a=Box.createVerticalBox();
@@ -59,7 +62,7 @@ public class mainGUI extends JFrame {
 		//tab
 		jtp.addTab("Temples", a);
 		jtp.addTab("Compare", compare);
-		jtp.addTab("Temple Progress", new JPanel());
+		jtp.addTab("Temple Progress", label);
 		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		
@@ -87,12 +90,6 @@ public class mainGUI extends JFrame {
 		a.add(b2);
 		a.add(showinfo);
 		
-	
-		//b1.add(Box.createVerticalGlue());
-
-		
-		
-
 		//compare pane
 		compare.add(sizes2);
 		compareh.add(bcompare);
@@ -104,7 +101,6 @@ public class mainGUI extends JFrame {
 		//mainframe.add(label);
 
 		mainframe.add(jtp);
-		//mainframe.add(p2);
 		mainframe.setBackground(Color.white);
 		mainframe.setBounds(500, 600,800,1000);
 		mainframe.setResizable(true);
@@ -113,9 +109,7 @@ public class mainGUI extends JFrame {
 		mainframe.setVisible(true);
 	}
 
-	public static void setPanel(Panel panel) {
-		mainGUI.Panel = panel;
-	}
+
 
 	
 
@@ -131,13 +125,17 @@ public class mainGUI extends JFrame {
 	class MyActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String arg = e.getActionCommand();
+			
 			if (arg == "exit") {
 				System.exit(0);
 			}
 			else if (arg == "Go") {
-				System.out.println(lbcj);
-				
+				if(lbcj!=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
+					System.out.println(lbcj);
 					new GUI2();
+				}else{
+					JOptionPane.showMessageDialog(null,"you have not select any temple" );
+				}
 			}else if(arg=="add"){
 				System.out.println("add");
 			}else if(arg=="compare"){
@@ -158,6 +156,18 @@ public class mainGUI extends JFrame {
 			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
 				showinfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
 				lbcj=TEMPLE_TYPE.ASIA_MINOR;
+				label.removeAll();
+				
+				ImageIcon icon = new ImageIcon("src/blkGUIone/temple1.png");
+				label=new JLabel(icon);
+				label.updateUI();
+				/*
+				panel=new temple1();
+				System.out.println("temple progross should change");
+				panel.removeAll();
+				panel.updateUI();
+				panel.revalidate();
+				*/
 			} else if (pe == TEMPLE_TYPE.HERCULER) {
 				showinfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
 				lbcj=TEMPLE_TYPE.HERCULER;
