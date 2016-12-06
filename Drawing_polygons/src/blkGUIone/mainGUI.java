@@ -3,6 +3,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
@@ -30,7 +31,7 @@ public class mainGUI extends JFrame {
 	private JButton bgo, bexit, bcompare,badd;
 	
 	//ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
-	public JLabel showInfo = new JLabel();
+	public JLabel showinfo = new JLabel();
 	//public static String lbcj="none";
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.ASIA_MINOR;
 	public static JComboBox sizes2 = new JComboBox(lbcj.values());
@@ -86,7 +87,7 @@ public class mainGUI extends JFrame {
 		b2.add(bgo);
 		b2.add(bexit);
 		a.add(b2);
-		a.add(showInfo);
+		a.add(showinfo);
 		
 	
 		//b1.add(Box.createVerticalGlue());
@@ -157,10 +158,10 @@ public class mainGUI extends JFrame {
 			if(pe == TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
 				JOptionPane.showMessageDialog(null,"you have not select any temple" );
 			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
-				showInfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
+				showinfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
 				lbcj=TEMPLE_TYPE.ASIA_MINOR;
 			} else if (pe == TEMPLE_TYPE.HERCULER) {
-				showInfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
+				showinfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
 				lbcj=TEMPLE_TYPE.HERCULER;
 			}
 		}
