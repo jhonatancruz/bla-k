@@ -67,8 +67,6 @@ public class mainGUI extends JFrame {
 		jtp.addChangeListener(new MyChangeListener());
 		
 		
-		
-		
 		// buttons in Panel
 
 		bgo = new JButton("Go");
