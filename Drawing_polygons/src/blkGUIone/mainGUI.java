@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -22,7 +23,8 @@ import javax.swing.event.ChangeListener;
 public class mainGUI extends JFrame {
 
 	private JFrame mainframe;
-	private JButton bgo, bexit, bdelete;
+	private JButton bgo, bexit;
+	public JButton closeButton =new JButton();
 	
 	public JLabel showinfo = new JLabel();
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
@@ -31,7 +33,7 @@ public class mainGUI extends JFrame {
 	public static JLabel label;
 	
 	public JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
-	
+	public static int SELECTED_TAB_INDEX;
 	public mainGUI() {
 		// create mainframe
 		mainframe = new JFrame("BLK project");
@@ -64,8 +66,7 @@ public class mainGUI extends JFrame {
 		bexit = new JButton("exit");
 		bexit.addActionListener(new MyActionListener());
 		
-		bdelete = new JButton("delete");
-		bdelete.addActionListener(new MyActionListener());
+		closeButton.addActionListener(new MyActionListener());
 		
 	
 		// connect to listenner
@@ -91,7 +92,19 @@ public class mainGUI extends JFrame {
 	public static void main(String[] args) {
 		new mainGUI();
 	}
+	
+    public static void setSELECTED_TAB_INDEX(int SELECTED_TAB_INDEX) {
+    	closeButton.SELECTED_TAB_INDEX = SELECTED_TAB_INDEX;
+    }
+    
+    public void setCloseAction(ActionListener al) {
+        closeButton.addActionListener(al);
+        closeButton.setSize(10, 10);
+        closeButton.setBorder(new EmptyBorder(0, 0, 0, 0));
+        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/blkGUIone/delete.png")));
 
+    }
+    
 	class MyActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String arg = e.getActionCommand();
@@ -107,6 +120,7 @@ public class mainGUI extends JFrame {
 				}
 			}else if (arg=="delete"){
 				System.out.println("delete works");
+				
 			}
 		}
 	}
@@ -124,7 +138,6 @@ public class mainGUI extends JFrame {
 				showinfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
 				lbcj=TEMPLE_TYPE.ASIA_MINOR;
 				
-				//jtp.remove(mainGUI.panel);
 				mainGUI.panel=new temple1();
 				jtp.add(TEMPLE_TYPE.ASIA_MINOR.name,mainGUI.panel);
 				mainframe.revalidate();
@@ -139,11 +152,30 @@ public class mainGUI extends JFrame {
 			}else if (pe == TEMPLE_TYPE.TEMPLE2){
 				showinfo.setText(TEMPLE_TYPE.TEMPLE2.getInfo());
 				lbcj=TEMPLE_TYPE.TEMPLE2;
-				mainGUI.panel=new templeofherculer();
+				mainGUI.panel=new temple2();
 				jtp.add(TEMPLE_TYPE.TEMPLE2.name,mainGUI.panel);
-				mainGUI.panel.add(bdelete);
 				
 				mainframe.revalidate();
+			}else if (pe==TEMPLE_TYPE.DORIC){
+				showinfo.setText(TEMPLE_TYPE.DORIC.getInfo());
+				lbcj=TEMPLE_TYPE.DORIC;
+				mainGUI.panel=new Doric();
+				jtp.add(TEMPLE_TYPE.DORIC.name,mainGUI.panel);
+			}else if (pe==TEMPLE_TYPE.TEMPLE3){
+				showinfo.setText(TEMPLE_TYPE.TEMPLE3.getInfo());
+				lbcj=TEMPLE_TYPE.TEMPLE3;
+				mainGUI.panel=new temple3();
+				jtp.add(TEMPLE_TYPE.TEMPLE3.name,mainGUI.panel);
+			}else if (pe==TEMPLE_TYPE.TEMPLE4){
+				showinfo.setText(TEMPLE_TYPE.TEMPLE4.getInfo());
+				lbcj=TEMPLE_TYPE.TEMPLE4;
+				mainGUI.panel=new temple4();
+				jtp.add(TEMPLE_TYPE.TEMPLE4.name,mainGUI.panel);
+			}else if (pe==TEMPLE_TYPE.TEMPLE5){
+				showinfo.setText(TEMPLE_TYPE.TEMPLE5.getInfo());
+				lbcj=TEMPLE_TYPE.TEMPLE5;
+				mainGUI.panel=new temple5();
+				jtp.add(TEMPLE_TYPE.TEMPLE5.name,mainGUI.panel);
 			}
 		}
 	}
