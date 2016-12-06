@@ -1,18 +1,13 @@
 package blkGUIone;
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dialog;
+
 import java.awt.Dimension;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,7 +18,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import blkGUIone.GUI2.MyChangeListener;
 
 public class mainGUI extends JFrame {
 
@@ -32,7 +26,6 @@ public class mainGUI extends JFrame {
 	
 	public JLabel showinfo = new JLabel();
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
-	public static JComboBox sizes2 = new JComboBox(lbcj.values());
 	public static JComboBox sizes = new JComboBox(lbcj.values());
 	public static JPanel panel;
 	public static JLabel label;
@@ -46,12 +39,9 @@ public class mainGUI extends JFrame {
 		//jpanel
 		JPanel panel=new JPanel();
 		mainGUI.panel=panel;
-		mainGUI.panel=new temple1();
+		//mainGUI.panel=new templeofherculer();
 		
-		// label hello
-		ImageIcon icon = new ImageIcon("src/blkGUIone/BLK-Logo-White.jpg");
-		mainGUI.label= new JLabel(icon);
-		
+	
 		
 		//boxlayout
 		Box a=Box.createVerticalBox();
@@ -61,8 +51,7 @@ public class mainGUI extends JFrame {
 		Box compareh=Box.createHorizontalBox();
 		//tab
 		jtp.addTab("Temples", a);
-		jtp.addTab("Compare", compare);
-		jtp.addTab("Temple Progress", label);
+
 		//jtp.addTab("User input", new JPanel());
 		jtp.addChangeListener(new MyChangeListener());
 		
@@ -92,16 +81,7 @@ public class mainGUI extends JFrame {
 		a.add(b2);
 		a.add(showinfo);
 		
-		//compare pane
-		compare.add(sizes2);
-		compareh.add(bcompare);
-		compareh.add(badd);
-		compare.add(compareh);
-
-		//label.setSize(350, 600);
-		// add panel to frame
-		//mainframe.add(label);
-
+		
 		mainframe.add(jtp);
 		mainframe.setBackground(Color.white);
 		mainframe.setBounds(500, 600,800,1000);
@@ -109,15 +89,6 @@ public class mainGUI extends JFrame {
 		mainframe.setLocationRelativeTo(null);
 		mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		mainframe.setVisible(true);
-	}
-
-
-
-	
-
-
-	public void actionPerformed(ActionEvent e) {
-
 	}
 
 	public static void main(String[] args) {
@@ -148,6 +119,7 @@ public class mainGUI extends JFrame {
 
 	class MyItemListener implements ItemListener {
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
@@ -158,21 +130,20 @@ public class mainGUI extends JFrame {
 			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
 				showinfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
 				lbcj=TEMPLE_TYPE.ASIA_MINOR;
-				label.removeAll();
 				
-				ImageIcon icon = new ImageIcon("src/blkGUIone/temple1.png");
-				label=new JLabel(icon);
-				label.updateUI();
-				/*
-				panel=new temple1();
-				System.out.println("temple progross should change");
-				panel.removeAll();
-				panel.updateUI();
-				panel.revalidate();
-				*/
+				//jtp.remove(mainGUI.panel);
+				mainGUI.panel=new temple1();
+				jtp.add(TEMPLE_TYPE.ASIA_MINOR.name,mainGUI.panel);
+				mainframe.revalidate();
+				
 			} else if (pe == TEMPLE_TYPE.HERCULER) {
 				showinfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
 				lbcj=TEMPLE_TYPE.HERCULER;
+				
+				jtp.remove(mainGUI.panel);
+				mainGUI.panel=new templeofherculer();
+				jtp.add(TEMPLE_TYPE.HERCULER.name,mainGUI.panel);
+				mainframe.revalidate();
 			}
 		}
 	}
