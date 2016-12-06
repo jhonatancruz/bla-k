@@ -24,7 +24,7 @@ public class mainGUI extends JFrame {
 
 	private JFrame mainframe;
 	private JButton bgo, bexit;
-	public JButton closeButton =new JButton();
+	public JButton closeButton =new JButton("close");
 	
 	public JLabel showinfo = new JLabel();
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
@@ -92,18 +92,6 @@ public class mainGUI extends JFrame {
 	public static void main(String[] args) {
 		new mainGUI();
 	}
-	
-    public static void setSELECTED_TAB_INDEX(int SELECTED_TAB_INDEX) {
-    	closeButton.SELECTED_TAB_INDEX = SELECTED_TAB_INDEX;
-    }
-    
-    public void setCloseAction(ActionListener al) {
-        closeButton.addActionListener(al);
-        closeButton.setSize(10, 10);
-        closeButton.setBorder(new EmptyBorder(0, 0, 0, 0));
-        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/blkGUIone/delete.png")));
-
-    }
     
 	class MyActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -118,9 +106,9 @@ public class mainGUI extends JFrame {
 				}else{
 					JOptionPane.showMessageDialog(null,"you have not select any temple" );
 				}
-			}else if (arg=="delete"){
+			}else if (arg=="close"){
 				System.out.println("delete works");
-				
+				jtp.remove(jtp.getSelectedIndex());
 			}
 		}
 	}
@@ -132,20 +120,20 @@ public class mainGUI extends JFrame {
 			JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
 			TEMPLE_TYPE pe = (TEMPLE_TYPE) cb.getSelectedItem();
 			System.out.println(pe);
+			mainGUI.panel.add(closeButton);
 			if(pe == TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
 				JOptionPane.showMessageDialog(null,"you have not select any temple" );
 			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
 				showinfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
 				lbcj=TEMPLE_TYPE.ASIA_MINOR;
-				
 				mainGUI.panel=new temple1();
 				jtp.add(TEMPLE_TYPE.ASIA_MINOR.name,mainGUI.panel);
+				
 				mainframe.revalidate();
 				
 			} else if (pe == TEMPLE_TYPE.HERCULER) {
 				showinfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
 				lbcj=TEMPLE_TYPE.HERCULER;
-				
 				mainGUI.panel=new templeofherculer();
 				jtp.add(TEMPLE_TYPE.HERCULER.name,mainGUI.panel);
 				mainframe.revalidate();
@@ -154,7 +142,6 @@ public class mainGUI extends JFrame {
 				lbcj=TEMPLE_TYPE.TEMPLE2;
 				mainGUI.panel=new temple2();
 				jtp.add(TEMPLE_TYPE.TEMPLE2.name,mainGUI.panel);
-				
 				mainframe.revalidate();
 			}else if (pe==TEMPLE_TYPE.DORIC){
 				showinfo.setText(TEMPLE_TYPE.DORIC.getInfo());
@@ -185,6 +172,8 @@ public class mainGUI extends JFrame {
 		@Override
 		public void stateChanged(ChangeEvent e) {
 			String temp = jtp.getTitleAt(jtp.getSelectedIndex());
+			System.out.println(temp);
+			
 		}
 	}
 	
