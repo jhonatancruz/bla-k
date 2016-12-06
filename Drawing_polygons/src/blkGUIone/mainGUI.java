@@ -22,7 +22,7 @@ import javax.swing.event.ChangeListener;
 public class mainGUI extends JFrame {
 
 	private JFrame mainframe;
-	private JButton bgo, bexit, bcompare,badd;
+	private JButton bgo, bexit, bdelete;
 	
 	public JLabel showinfo = new JLabel();
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
@@ -64,11 +64,10 @@ public class mainGUI extends JFrame {
 		bexit = new JButton("exit");
 		bexit.addActionListener(new MyActionListener());
 		
-		bcompare = new JButton("compare");
-		bcompare.addActionListener(new MyActionListener());
+		bdelete = new JButton("delete");
+		bdelete.addActionListener(new MyActionListener());
 		
-		badd = new JButton("add");
-		badd.addActionListener(new MyActionListener());
+	
 		// connect to listenner
 		sizes.addItemListener(new MyItemListener());
 
@@ -103,21 +102,17 @@ public class mainGUI extends JFrame {
 			else if (arg == "Go") {
 				if(lbcj!=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
 					System.out.println(lbcj);
-					new GUI2();
 				}else{
 					JOptionPane.showMessageDialog(null,"you have not select any temple" );
 				}
-			}else if(arg=="add"){
-				System.out.println("add");
-			}else if(arg=="compare"){
-				System.out.println("compare");
+			}else if (arg=="delete"){
+				System.out.println("delete works");
 			}
 		}
 	}
 
 	class MyItemListener implements ItemListener {
 		
-		@SuppressWarnings("deprecation")
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
@@ -138,9 +133,16 @@ public class mainGUI extends JFrame {
 				showinfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
 				lbcj=TEMPLE_TYPE.HERCULER;
 				
-				jtp.remove(mainGUI.panel);
 				mainGUI.panel=new templeofherculer();
 				jtp.add(TEMPLE_TYPE.HERCULER.name,mainGUI.panel);
+				mainframe.revalidate();
+			}else if (pe == TEMPLE_TYPE.TEMPLE2){
+				showinfo.setText(TEMPLE_TYPE.TEMPLE2.getInfo());
+				lbcj=TEMPLE_TYPE.TEMPLE2;
+				mainGUI.panel=new templeofherculer();
+				jtp.add(TEMPLE_TYPE.TEMPLE2.name,mainGUI.panel);
+				mainGUI.panel.add(bdelete);
+				
 				mainframe.revalidate();
 			}
 		}
