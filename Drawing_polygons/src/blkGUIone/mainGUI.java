@@ -24,16 +24,14 @@ public class mainGUI extends JFrame {
 
 	private JFrame mainframe;
 	private JButton bgo, bexit;
-	public JButton closeButton =new JButton("close");
+	//public JButton closeButton =new JButton("close");
 	
 	public JLabel showinfo = new JLabel();
 	private static TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
 	public static JComboBox sizes = new JComboBox(lbcj.values());
 	public static JPanel panel;
-	public static JLabel label;
 	
 	public JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
-	public static int SELECTED_TAB_INDEX;
 	public mainGUI() {
 		// create mainframe
 		mainframe = new JFrame("BLK project");
@@ -66,7 +64,7 @@ public class mainGUI extends JFrame {
 		bexit = new JButton("exit");
 		bexit.addActionListener(new MyActionListener());
 		
-		closeButton.addActionListener(new MyActionListener());
+		
 		
 	
 		// connect to listenner
@@ -114,56 +112,39 @@ public class mainGUI extends JFrame {
 	}
 
 	class MyItemListener implements ItemListener {
-		
 		@Override
 		public void itemStateChanged(ItemEvent e) {
 			JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
 			TEMPLE_TYPE pe = (TEMPLE_TYPE) cb.getSelectedItem();
 			System.out.println(pe);
+			JButton closeButton =new JButton("close");
+			closeButton.addActionListener(new MyActionListener());
 			mainGUI.panel.add(closeButton);
+			lbcj=pe;
+			showinfo.setText(pe.getInfo());
+			jtp.add(pe.name,mainGUI.panel);
+			//jtp.remove(mainGUI.panel);
 			if(pe == TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
 				JOptionPane.showMessageDialog(null,"you have not select any temple" );
 			}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
-				showinfo.setText(TEMPLE_TYPE.ASIA_MINOR.getInfo());
-				lbcj=TEMPLE_TYPE.ASIA_MINOR;
 				mainGUI.panel=new temple1();
-				jtp.add(TEMPLE_TYPE.ASIA_MINOR.name,mainGUI.panel);
-				
-				mainframe.revalidate();
-				
+
 			} else if (pe == TEMPLE_TYPE.HERCULER) {
-				showinfo.setText(TEMPLE_TYPE.HERCULER.getInfo());
-				lbcj=TEMPLE_TYPE.HERCULER;
 				mainGUI.panel=new templeofherculer();
-				jtp.add(TEMPLE_TYPE.HERCULER.name,mainGUI.panel);
-				mainframe.revalidate();
 			}else if (pe == TEMPLE_TYPE.TEMPLE2){
-				showinfo.setText(TEMPLE_TYPE.TEMPLE2.getInfo());
-				lbcj=TEMPLE_TYPE.TEMPLE2;
 				mainGUI.panel=new temple2();
-				jtp.add(TEMPLE_TYPE.TEMPLE2.name,mainGUI.panel);
-				mainframe.revalidate();
 			}else if (pe==TEMPLE_TYPE.DORIC){
-				showinfo.setText(TEMPLE_TYPE.DORIC.getInfo());
-				lbcj=TEMPLE_TYPE.DORIC;
+
 				mainGUI.panel=new Doric();
-				jtp.add(TEMPLE_TYPE.DORIC.name,mainGUI.panel);
 			}else if (pe==TEMPLE_TYPE.TEMPLE3){
-				showinfo.setText(TEMPLE_TYPE.TEMPLE3.getInfo());
-				lbcj=TEMPLE_TYPE.TEMPLE3;
+			
 				mainGUI.panel=new temple3();
-				jtp.add(TEMPLE_TYPE.TEMPLE3.name,mainGUI.panel);
 			}else if (pe==TEMPLE_TYPE.TEMPLE4){
-				showinfo.setText(TEMPLE_TYPE.TEMPLE4.getInfo());
-				lbcj=TEMPLE_TYPE.TEMPLE4;
 				mainGUI.panel=new temple4();
-				jtp.add(TEMPLE_TYPE.TEMPLE4.name,mainGUI.panel);
 			}else if (pe==TEMPLE_TYPE.TEMPLE5){
-				showinfo.setText(TEMPLE_TYPE.TEMPLE5.getInfo());
-				lbcj=TEMPLE_TYPE.TEMPLE5;
 				mainGUI.panel=new temple5();
-				jtp.add(TEMPLE_TYPE.TEMPLE5.name,mainGUI.panel);
 			}
+			mainframe.revalidate();
 		}
 	}
 	
