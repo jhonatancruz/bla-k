@@ -24,23 +24,13 @@ public class mainGUI extends JFrame {
 
 	private JFrame mainframe;
 	private JButton bgo, bexit;
-	//public JButton closeButton =new JButton("close");
-
 	private JLabel showinfo = new JLabel();
 	private TEMPLE_TYPE lbcj=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE;
 	private JComboBox sizes = new JComboBox(TEMPLE_TYPE.values());
-	//public JPanel panel;
-
 	private JTabbedPane jtp = new JTabbedPane(JTabbedPane.TOP);
 	public mainGUI() {
 		// create mainframe
 		mainframe = new JFrame("BLK project");
-
-		//jpanel
-		//panel=new JPanel();
-		//mainGUI.panel=new templeofherculer();
-
-
 
 		//boxlayout
 		Box a=Box.createVerticalBox();
@@ -50,10 +40,6 @@ public class mainGUI extends JFrame {
 		Box compareh=Box.createHorizontalBox();
 		//tab
 		jtp.addTab("Temples", a);
-
-		//jtp.addTab("User input", new JPanel());
-		//jtp.addChangeListener(new MyChangeListener());
-
 
 		// buttons in Panel
 
@@ -116,51 +102,37 @@ public class mainGUI extends JFrame {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				JComboBox<TEMPLE_TYPE> cb = (JComboBox<TEMPLE_TYPE>) e.getSource();
 				TEMPLE_TYPE pe = (TEMPLE_TYPE) cb.getSelectedItem();
-				System.out.println("here" + pe);
-				JPanel panel = new JPanel();
-				JButton closeButton =new JButton("close");
-				closeButton.addActionListener(new MyActionListener());
+				if(pe !=TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
+					System.out.println("here" + pe);
+					JPanel panel = new JPanel();
+					JButton closeButton =new JButton("close");
+					closeButton.addActionListener(new MyActionListener());
+					if (pe== TEMPLE_TYPE.ASIA_MINOR) {
+						panel=new temple1();
+					} else if (pe == TEMPLE_TYPE.HERCULER) {
+						panel=new templeofherculer();
+					}else if (pe == TEMPLE_TYPE.TEMPLE2){
+						panel=new temple2();
+					}else if (pe==TEMPLE_TYPE.DORIC){
+						panel=new Doric();
+					}else if (pe==TEMPLE_TYPE.TEMPLE3){
+						panel=new temple3();
+					}else if (pe==TEMPLE_TYPE.TEMPLE4){
+						panel=new temple4();
+					}else if (pe==TEMPLE_TYPE.TEMPLE5){
+						panel=new temple5();
+					}
+					jtp.add(pe.name,panel);
+					panel.add(closeButton);
+					//mainframe.revalidate();
+				}else {
+					JOptionPane.showMessageDialog(null,"you have not select any temple" );
+				}
+				
 
 				lbcj=pe;
 				showinfo.setText(pe.getInfo());
-
-				//jtp.remove(mainGUI.panel);
-				if(pe == TEMPLE_TYPE.PLEASE_SELECT_ONE_TEMPLE){
-					JOptionPane.showMessageDialog(null,"you have not select any temple" );
-				}else if (pe== TEMPLE_TYPE.ASIA_MINOR) {
-					panel=new temple1();
-				} else if (pe == TEMPLE_TYPE.HERCULER) {
-					panel=new templeofherculer();
-				}else if (pe == TEMPLE_TYPE.TEMPLE2){
-					panel=new temple2();
-				}else if (pe==TEMPLE_TYPE.DORIC){
-
-					panel=new Doric();
-				}else if (pe==TEMPLE_TYPE.TEMPLE3){
-
-					panel=new temple3();
-				}else if (pe==TEMPLE_TYPE.TEMPLE4){
-					panel=new temple4();
-				}else if (pe==TEMPLE_TYPE.TEMPLE5){
-					panel=new temple5();
-				}
-				jtp.add(pe.name,panel);
-				panel.add(closeButton);
-				//mainframe.revalidate();
 			}
 		}
 	}
-
-	//	class MyChangeListener implements ChangeListener {
-	//
-	//		@Override
-	//		public void stateChanged(ChangeEvent e) {
-	//			String temp = jtp.getTitleAt(jtp.getSelectedIndex());
-	//			System.out.println(temp);
-	//			
-	//		}
-	//	}
-
-
-
 }
